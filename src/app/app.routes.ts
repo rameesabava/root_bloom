@@ -1,3 +1,36 @@
 import { Routes } from '@angular/router';
+import { Home } from './home/home';
+import { Register } from './register/register';
+import { Login } from './login/login';
+import { About } from './about/about';
+import { Contact } from './contact/contact';
+import { Plants } from './plants/plants';
+import { Pnf } from './pnf/pnf';
 
-export const routes: Routes = [];
+export const routes: Routes = [
+    // lazy load module - admin
+    {
+        path:"admin",loadChildren:()=>import('./admin-module/admin-module-module').then(module=>module.AdminModuleModule)
+    },
+    {
+        path:"",component:Home,title:"Home"
+    },
+    {
+        path:"register",component:Register,title:"Register"
+    },
+    {
+        path:"login",component:Login,title:"Login"
+    },
+    {
+        path:"about",component:About,title:"About"
+    },
+    {
+        path:"contact",component:Contact,title:"Contact"
+    },
+    {
+        path:"plants",component:Plants,title:"Movies"
+    },
+    {
+        path:"**",component:Pnf,title:"Page Not Found"
+    },
+];
