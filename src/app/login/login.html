@@ -1,1 +1,65 @@
-<p>login works!</p>
+<div class="container-fluid min-vh-100 d-flex align-items-center justify-content-center"
+    style="background: url('/registerbg.png') center/cover no-repeat;">
+
+    <div class="container py-4">
+
+        <div class="row justify-content-center align-items-center g-4">
+
+            <!-- Login Form -->
+            <div class="col-12 col-md-8 col-lg-5">
+
+                <div class="bg-light rounded-4 shadow p-4 p-md-5">
+
+                    <div class="navbar-brand d-flex align-items-center mb-4">
+                        <img src="/logo.png" width="30" height="30" alt="logo">
+                        <span class="ms-2 fw-bold">Root & Bloom</span>
+                    </div>
+
+                    <h3 class="mb-4">Login</h3>
+
+                    <form [formGroup]="loginForm" (ngSubmit)="login()">
+
+                        <div class="mb-3">
+                            <input type="email" class="form-control" placeholder="Email" formControlName="email">
+                            @if (loginForm.get('email')?.errors && loginForm.get('email')?.touched){
+                            <div class="mb-3 text-danger fw-bolder">Invalid Email</div>
+                            }
+                        </div>
+
+                        <div class="mb-4">
+                            <input type="password" class="form-control" placeholder="Password" formControlName="password">
+                        </div>
+
+                        <button type="submit" class="btn btn-success w-100">
+                            Login
+                        </button>
+
+                        <p class="text-center mt-3 mb-0">
+                            Don't have an account?
+                            <a routerLink="/register">Register</a>
+                        </p>
+
+                    </form>
+
+                </div>
+
+            </div>
+
+            <!-- Right Side -->
+            <div class="col-12 col-lg-5 text-center text-lg-start text-white">
+
+                <h1 class="display-4 fw-bold">
+                    Welcome Back!
+                </h1>
+
+                <p class="lead mt-3">
+                    Login to your account and continue your journey with us.
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>

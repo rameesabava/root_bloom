@@ -28,7 +28,7 @@ export const routes: Routes = [
         path:"contact",component:Contact,title:"Contact"
     },
     {
-        path:"plants",component:Plants,title:"Movies"
+        path:"plants",component:Plants,title:"Plants"
     },
     {
         path:"**",component:Pnf,title:"Page Not Found"
