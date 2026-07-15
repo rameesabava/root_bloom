@@ -42,19 +42,22 @@
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
                             <i class="fa-solid fa-user"></i>
+                            @if(loginUsername){
+                            <span>Hi {{loginUsername}}</span>
+                            }
                         </a>
 
                         <ul class="dropdown-menu dropdown-menu-end">
-                            <li>
-                                <a class="dropdown-item" routerLink="/login">
-                                    Login
-                                </a>
-                            </li>
-                            <li>
-                                <a class="dropdown-item" routerLink="/register">
-                                    Register
-                                </a>
-                            </li>
+                            @if (isLoggedIn){
+                            <li><a class="dropdown-item" routerLink="/profile">My Profile</a></li>
+                            <li><a class="dropdown-item" routerLink="/orders">My Orders</a></li>
+                            <li><button (click)="logout()" class="dropdown-item">Logout</button></li>
+
+                            } @else {
+                            <li><a class="dropdown-item" routerLink="/login">Login</a></li>
+                            <li><a class="dropdown-item" routerLink="/register">Register</a></li>
+                            }
+
                         </ul>
                     </li>
                 </ul>
