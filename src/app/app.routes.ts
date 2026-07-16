@@ -8,7 +8,7 @@ import { Plants } from './plants/plants';
 import { Pnf } from './pnf/pnf';
 import { View } from './view/view';
 import { Profile } from './profile/profile';
-import { Orders } from './orders/orders';
+import { Cart } from './cart/cart';
 
 export const routes: Routes = [
     // lazy load module - admin
@@ -40,7 +40,7 @@ export const routes: Routes = [
         path:"profile",component:Profile,title:"My Profile"
     },
      {
-        path:"orders",component:Orders,title:"My Orders"
+        path:"cart",component:Cart,title:"My Cart"
     },
     {
         path:"**",component:Pnf,title:"Page Not Found"
