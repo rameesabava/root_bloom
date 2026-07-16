@@ -1,6 +1,7 @@
 import { Component, inject } from '@angular/core';
 import { Router, RouterLink } from '@angular/router';
 import Swal from 'sweetalert2';
+import { AuthService } from '../services/auth-service';
 
 @Component({
   selector: 'app-header',
@@ -9,22 +10,16 @@ import Swal from 'sweetalert2';
   styleUrl: './header.css',
 })
 export class Header {
-  isLoggedIn:boolean = false
-  loginUsername:string = ""
+  auth = inject(AuthService)
   router = inject(Router)
 
   ngOnInit(){
-    if(sessionStorage.getItem("token") && sessionStorage.getItem("user")){
-      this.isLoggedIn = true
-      const user = JSON.parse(sessionStorage.getItem("user") || "")
-      this.loginUsername = user.username
-    }
+    this.auth.loadUser()
   }
 
  logout(){
   sessionStorage.clear()
-  this.isLoggedIn = false
-  this.loginUsername = ""
+  this.auth.loadUser()
   this.router.navigateByUrl('/')
  }
 

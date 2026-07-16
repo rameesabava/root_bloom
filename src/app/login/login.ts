@@ -4,6 +4,7 @@ import { ApiService } from '../services/api-service';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import Swal from 'sweetalert2';
+import { AuthService } from '../services/auth-service';
 
 @Component({
   selector: 'app-login',
@@ -15,6 +16,7 @@ import Swal from 'sweetalert2';
 export class Login {
 
   api = inject(ApiService)
+  auth = inject(AuthService)
 
   loginForm: FormGroup
   formBuilder = inject(FormBuilder)
@@ -36,6 +38,7 @@ export class Login {
         next: (res: any) => {
           sessionStorage.setItem("token", res.token)
           sessionStorage.setItem("user", JSON.stringify(res.user))
+          this.auth.loadUser()
           Swal.fire({
             icon: 'success',
             title: 'Success',

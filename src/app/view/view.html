@@ -1,1 +1,60 @@
-<p>view works!</p>
+<div class="container my-5">
+    <div class="row">
+        <!-- image -->
+        <div class="col-lg-5">
+            <img [src]="api.server_url + '/uploads/' + plantDetails().image" class="img-fluid rounded" alt="plant">
+        </div>
+
+        <!-- plant details -->
+        <div class="col-lg-7">
+            <h2>{{ plantDetails().name }}</h2>
+            <h3 class="text-success mt-2">
+                ₹ {{ plantDetails().price }}
+            </h3>
+           
+            <p>{{ plantDetails().description }}</p>
+
+            <hr>
+
+            <p><strong>Category:</strong> {{ plantDetails().category }}</p>
+            <p><strong>Stock:</strong> {{ plantDetails().stock }}</p>
+            <p><strong>Size:</strong> {{ plantDetails().size }}</p>
+            <p><strong>Height:</strong> {{ plantDetails().height }}</p>
+            <p><strong>Pot Size:</strong> {{ plantDetails().potSize }}</p>
+
+             <div class="d-flex flex-wrap justify-content-evenly align-items-center my-3 gap-3">
+                <div style="background-color: rgb(195, 223, 195); height: 150px; width: 180px; "
+                    class="p-2 rounded d-flex flex-column justify-content-center align-items-center gap-2">
+                    <i class="fa-regular fa-sun"></i>
+                    <span>Sunlight</span>
+                    {{ plantDetails().sunlight }}
+                </div>
+                <div style="background-color: rgb(195, 223, 195); height: 150px; width: 180px;"
+                    class="p-2 rounded d-flex flex-column justify-content-center align-items-center gap-2">
+                    <i class="fa-solid fa-droplet"></i>
+                    <span>Watering</span>
+                    {{ plantDetails().watering}}
+                </div>
+                <div style="background-color: rgb(195, 223, 195); height: 150px; width: 180px;"
+                    class="p-2 rounded d-flex flex-column justify-content-center align-items-center gap-2">
+                    <i class="fa-solid fa-cloud-rain"></i>
+                    <span>Humidity</span>
+                    {{ plantDetails().humidity }}
+                </div>
+                <div style="background-color: rgb(195, 223, 195); height: 150px; width: 180px;"
+                    class="p-2 rounded d-flex flex-column justify-content-center align-items-center gap-2">
+                    <i class="fa-solid fa-temperature-half"></i>
+                    <span>Temperature</span>
+                    {{ plantDetails().temperature}}
+                </div>
+                <div style="background-color: rgb(195, 223, 195); height: 150px; width: 180px;"
+                    class="p-2 rounded d-flex flex-column justify-content-center align-items-center gap-2">
+                    <i class="fa-solid fa-seedling"></i>
+                    <span>Fertilizer</span>
+                    {{ plantDetails().fertilizer}}
+                </div>
+            </div>
+            <button class="btn btn-success mt-3">Add to Cart</button>
+        </div>
+    </div>
+</div>
