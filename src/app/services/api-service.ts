@@ -64,6 +64,10 @@ export class ApiService {
     return this.http.delete(`${this.server_url}/cart/remove/${cartId}`, this.appendToken())
   }
 
+  // remove all cart items
+    removeAllCartItemsAPI() {
+    return this.http.delete(`${this.server_url}/cart/remove`, this.appendToken())
+  }
   // add order
     addOrderAPI(reqBody:any){
     return this.http.post(`${this.server_url}/order/add`, reqBody, this.appendToken())

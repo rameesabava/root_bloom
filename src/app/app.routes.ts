@@ -7,7 +7,6 @@ import { Contact } from './contact/contact';
 import { Plants } from './plants/plants';
 import { Pnf } from './pnf/pnf';
 import { View } from './view/view';
-import { Profile } from './profile/profile';
 import { Cart } from './cart/cart';
 import { Checkout } from './checkout/checkout';
 
@@ -36,9 +35,6 @@ export const routes: Routes = [
     },
     {
         path:"plant/:id",component:View,title:"View-Plant"
-    },
-     {
-        path:"profile",component:Profile,title:"My Profile"
     },
      {
         path:"cart",component:Cart,title:"My Cart"

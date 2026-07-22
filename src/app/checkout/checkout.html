@@ -7,15 +7,33 @@
                 <i class="fa-solid fa-location-dot fs-3"></i>
                 <h4>Shipping Address</h4>
             </div>
-            <form>
+            <form #addressForm="ngForm">
                 <div class="my-3">
-                    <input type="text" placeholder="Full Name" class="form-control">
+                    <input type="text" placeholder="Full Name" class="form-control" [(ngModel)]="username"
+                        name="username" required minlength="3" #name="ngModel">
+                    @if(name.invalid && name.touched){
+                    <div class="text-danger mt-1">
+                        Full name is required.
+                    </div>
+                    }
                 </div>
                 <div class="my-3">
-                    <input type="text" placeholder="Phone Number" class="form-control">
+                    <input type="text" placeholder="Phone Number" class="form-control" [(ngModel)]="phone" name="phone"
+                        required pattern="^[6-9][0-9]{9}$" #mobile="ngModel">
+                    @if(mobile.invalid && mobile.touched){
+                    <div class="text-danger mt-1">
+                        Enter a valid 10-digit phone number.
+                    </div>
+                    }
                 </div>
                 <div class="my-3">
-                    <textarea type="text" placeholder="Address" class="form-control" rows="6"></textarea>
+                    <textarea type="text" placeholder="Address" class="form-control" rows="6" [(ngModel)]="address"
+                        name="address" required minlength="10" #addr="ngModel"></textarea>
+                    @if(addr.invalid && addr.touched){
+                    <div class="text-danger mt-1">
+                        Address must be at least 10 characters.
+                    </div>
+                    }
                 </div>
             </form>
             <!-- payment method -->
@@ -24,8 +42,9 @@
                 <h4>Payment Method</h4>
             </div>
             <div>
-                <input style="accent-color: green;" type="radio" name="paymentMethod" value="Cash on Delivery" id="cod" class="me-2" checked>
-                            <label for="cod">Cash on Delivery</label>
+                <input style="accent-color: green;" type="radio" name="paymentMethod" value="Cash on Delivery" id="cod"
+                    class="me-2" [(ngModel)]="paymentMethod" name="paymentMethod" checked>
+                <label for="cod">Cash on Delivery</label>
 
             </div>
         </div>
@@ -59,9 +78,9 @@
                         </h4>
 
                     </div>
-                    <a routerLink="/plants" class="btn btn-success rounded w-100 mt-3">
+                    <button (click)="addOrder()" [disabled]="addressForm.invalid" class="btn btn-success rounded w-100 mt-3">
                         Place Order
-                    </a>
+                    </button>
 
                 </div>
 
