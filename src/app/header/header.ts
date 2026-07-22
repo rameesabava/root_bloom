@@ -20,6 +20,11 @@ export class Header {
  logout(){
   sessionStorage.clear()
   this.auth.loadUser()
+  Swal.fire({
+              icon: 'success',
+              title: 'success',
+              text: "Logout successful!!"
+            })
   this.router.navigateByUrl('/')
  }
 

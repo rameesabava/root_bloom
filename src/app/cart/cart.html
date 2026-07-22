@@ -1,1 +1,116 @@
-<p>cart works!</p>
+<div class="container">
+
+    <!-- header -->
+    <div class="bg-success-subtle rounded p-3 d-flex align-items-center gap-3 my-3">
+        <img src="/cart.png" width="60px" alt="cart">
+        <div>
+            <h2 class="fw-bold">My Cart</h2>
+            <h6 class="text-secondary">{{allCartPlants().length}} Item(s)</h6>
+        </div>
+    </div>
+
+    @if (allCartPlants().length>0) {
+ <div class="row">
+        <!-- items -->
+        <div class="col-lg-8">
+            @for(item of allCartPlants(); track item._id){
+            <div class="card border-0 shadow rounded my-3 p-2">
+                <div class="card-body">
+                    <div class="row align-items-center">
+                        <div class="col-md-2 text-center">
+                            <img [src]="api.server_url+'/uploads/'+item.plantImage" class="img-fluid rounded"
+                                style="height:100px; width:100px;">
+                        </div>
+                        <div class="col-md-4">
+                            <h5 class="fw-bold">{{item.plantName}}</h5>
+                            <h5 class="text-success">₹ {{item.price}}</h5>
+                        </div>
+
+                        <div class="col-md-3 text-center">
+                            <small class="text-secondary">Quantity</small>
+                            <div class="d-flex justify-content-center align-items-center gap-2 mt-2">
+                                <button (click)="decrementQuantity(item._id)" class="btn btn-outline-success btn-sm rounded-circle">
+                                    <i class="fa-solid fa-minus"></i>
+                                </button>
+                                <div class="fw-bold fs-5">{{item.quantity}}</div>
+                                <button (click)="incrementQuantity(item._id)" class="btn btn-outline-success btn-sm rounded-circle">
+                                    <i class="fa-solid fa-plus"></i>
+                                </button>
+                            </div>
+                        </div>
+
+                        <div class="col-md-2 text-center">
+                            <small class="text-secondary">Total</small>
+                            <h5 class="text-success fw-bold mt-2">₹ {{item.totalPrice}}</h5>
+                        </div>
+
+                        <!-- Delete icon -->
+                        <div class="col-md-1">
+                            <button (click)="deleteCartItem(item._id)" class="btn btn-light rounded-circle text-danger border">
+                                <i class="fa-solid fa-trash"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            }
+        </div>
+
+        <!-- order summary-->
+        <div class="col-lg-4 my-2">
+            <div class="card border-0 shadow rounded">
+                <div class="card-body">
+                    <h4 class="fw-bold mb-4">Order Summary</h4>
+                    <div class="d-flex justify-content-between mb-3">
+                        <span>Subtotal</span>
+                        <span class="fw-semibold">₹ {{subTotal()}}</span>
+                    </div>
+
+                    <div class="d-flex justify-content-between mb-3">
+                        <span>Delivery</span>
+                        @if(deliveryCharge()==0){
+                        <span class="text-success fw-semibold">FREE</span>
+                        } @else {
+                        <span class="fw-semibold">₹ {{deliveryCharge()}}</span>
+                        }
+                    </div>
+
+                    <hr>
+
+                    <div class="d-flex justify-content-between">
+
+                        <h5>Total</h5>
+
+                        <h4 class="text-success fw-bold">
+                            ₹ {{grandTotal()}}
+                        </h4>
+
+                    </div>
+
+                    <a routerLink="/checkout" class="btn btn-success rounded w-100 mt-4 py-2">
+                        <i class="fa-solid fa-credit-card me-2"></i>
+                        Proceed to Checkout
+                    </a>
+
+                    <a routerLink="/plants" class="btn btn-outline-success rounded w-100 mt-3">
+                        Continue Shopping
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+    } @else {
+<div class="my-3 text-center">
+    <h3 class="fw-bold">Your cart is empty</h3>   
+    <a routerLink="/plants" class="btn btn-success rounded mt-3">
+                            Continue Shopping
+                        </a>
+</div>
+                 }
+   
+
+</div>

@@ -1,8 +1,10 @@
 <div class="container my-5">
     <div class="row">
         <!-- image -->
-        <div class="col-lg-5">
+        <div class="col-lg-5 text-center">
             <img [src]="api.server_url + '/uploads/' + plantDetails().image" class="img-fluid rounded" alt="plant">
+            <button (click)="addToCart(plantDetails()._id)" class="btn btn-success mt-3 p-2"><i class="fa-solid fa-cart-arrow-down"></i>Add to Cart</button>
+
         </div>
 
         <!-- plant details -->
@@ -11,7 +13,7 @@
             <h3 class="text-success mt-2">
                 ₹ {{ plantDetails().price }}
             </h3>
-           
+
             <p>{{ plantDetails().description }}</p>
 
             <hr>
@@ -22,7 +24,7 @@
             <p><strong>Height:</strong> {{ plantDetails().height }}</p>
             <p><strong>Pot Size:</strong> {{ plantDetails().potSize }}</p>
 
-             <div class="d-flex flex-wrap justify-content-evenly align-items-center my-3 gap-3">
+            <div class="d-flex flex-wrap justify-content-evenly align-items-center my-3 gap-3">
                 <div style="background-color: rgb(195, 223, 195); height: 150px; width: 180px; "
                     class="p-2 rounded d-flex flex-column justify-content-center align-items-center gap-2">
                     <i class="fa-regular fa-sun"></i>
@@ -54,7 +56,6 @@
                     {{ plantDetails().fertilizer}}
                 </div>
             </div>
-            <button class="btn btn-success mt-3">Add to Cart</button>
         </div>
     </div>
 </div>

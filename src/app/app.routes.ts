@@ -9,6 +9,7 @@ import { Pnf } from './pnf/pnf';
 import { View } from './view/view';
 import { Profile } from './profile/profile';
 import { Cart } from './cart/cart';
+import { Checkout } from './checkout/checkout';
 
 export const routes: Routes = [
     // lazy load module - admin
@@ -41,6 +42,9 @@ export const routes: Routes = [
     },
      {
         path:"cart",component:Cart,title:"My Cart"
+    },
+    {
+        path:"checkout",component:Checkout,title:"Checkout"
     },
     {
         path:"**",component:Pnf,title:"Page Not Found"
