@@ -73,5 +73,15 @@ export class ApiService {
     return this.http.post(`${this.server_url}/order/add`, reqBody, this.appendToken())
   }
 
+  // get users API
+  getUsersAPI() {
+    return this.http.get(`${this.server_url}/users`, this.appendToken())
+  }
+
+
+    // get orders placed API
+  getPlacedOrdersAPI() {
+    return this.http.get(`${this.server_url}/orders/placed`, this.appendToken())
+  }
 
 }

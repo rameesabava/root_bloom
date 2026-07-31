@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { AddPlants } from './add-plants/add-plants';
 import { UpdatePlants } from './update-plants/update-plants';
 import { AdminDashboard } from './admin-dashboard/admin-dashboard';
+import { ViewOrder } from './view-order/view-order';
 
 const routes: Routes = [
   {
@@ -13,6 +14,9 @@ const routes: Routes = [
   },
   {
     path:"update/:id",component:UpdatePlants,title:"Update Plants"
+  },
+  {
+    path:"order/:id",component:ViewOrder,title:"Order View"
   }
 ];
 
