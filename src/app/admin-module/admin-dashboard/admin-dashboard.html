@@ -34,37 +34,44 @@
     </div>
 
     <!-- orders -->
-    <div class="row">
-        <div class="col-lg-8">
+    <div>
+        <div>
             <div class="p-4">
                 <div class="d-flex justify-content-between align-items-center">
                     <h2>Recent Orders</h2>
                     <a routerLink="/orders" class="btn btn-outline-success">View All Orders</a>
                 </div>
-                <table class="table-success">
-                    <tr>
-                        <th>Order ID</th>
-                        <th>Customer</th>
-                        <th>Status</th>
-                        <th>Date</th>
-                    </tr>
+                <div class="table-responsive">
+                    <table class="table table-success align-middle w-100 my-3">
+                        <tr>
+                            <th>Sl. No.</th>
+                            <th>Customer</th>
+                            <th>Phone Number</th>
+                            <th>Status</th>
+                            <th>Date</th>
+                        </tr>
 
-                    @for (item of allOrders(); track $index) {
-                    <tr [routerLink]="['/admin/order', item._id]" style="cursor: pointer;">
-                        <td>{{item._id}}</td>
-                        <td>{{item.username}}</td>
-                        <td>{{item.orderStatus}}</td>
-                        <td>{{ item.createdAt | date:'dd/MM/yyyy' }}</td>
+                        @for (item of allOrders(); track $index) {
+                        <tr [routerLink]="['/admin/order', item._id]" style="cursor: pointer;">
+                            <td>{{$index+1}}</td>
+                            <td>{{item.username}}</td>
+                            <td>{{item.phone}}</td>
+                            @if (item.orderStatus=="Placed") {
+                            <td class="badge bg-danger">{{item.orderStatus}}</td>
+                            }@else {
+                            <td class="badge bg-success">{{item.orderStatus}}</td>
+                            }
 
-                    </tr>
-                    }
+                            <td>{{ item.createdAt | date:'dd/MM/yyyy' }}</td>
 
-                </table>
+                        </tr>
+                        }
+
+                    </table>
+                </div>
             </div>
         </div>
-        <div class="col-lg-4">
-            Chart
-        </div>
+
 
     </div>
 

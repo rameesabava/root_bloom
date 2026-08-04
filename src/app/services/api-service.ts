@@ -78,10 +78,15 @@ export class ApiService {
     return this.http.get(`${this.server_url}/users`, this.appendToken())
   }
 
-
     // get orders placed API
   getPlacedOrdersAPI() {
     return this.http.get(`${this.server_url}/orders/placed`, this.appendToken())
   }
+
+    // view order API
+  viewOrderAPI(orderId: string) {
+    return this.http.get<any>(`${this.server_url}/order/${orderId}`, this.appendToken())
+  }
+
 
 }

@@ -1,1 +1,32 @@
-<p>view-order works!</p>
+<div class="container my-4">
+    <div>
+        <div class="bg-success p-2 fs-5 text-light my-2 rounded">Order Summary</div>
+        <p>Customer's Name: {{orderDetails().username}}</p>
+        <p>Phone Number: {{orderDetails().phone}}</p>
+        <p>Total Amount: ₹ {{orderDetails().totalAmount}}</p>
+        <p>Payment Method: {{orderDetails().paymentMethod}}</p>
+    </div>
+    <div>
+        <div class="bg-success p-2 fs-5 text-light my-2 rounded">Shipping Address</div>
+        <p>{{orderDetails().address}}</p>
+    </div>
+    <div>
+        <div class="bg-success p-2 fs-5 text-light my-2 rounded">Items</div>
+        @for (item of orderDetails().items; track $index) {
+        <div class="d-flex gap-3 my-2">
+            <div>
+                <img width="150" height="160" [src]="api.server_url + '/uploads/' + item.plantImage" alt="plant">
+            </div>
+            <div>
+                <p class="fw-bold">{{item.plantName}}</p>
+                <p>Quantity: {{item.quantity}}</p>
+                <p>Price: ₹ {{item.price}}</p>
+            </div>
+        </div>
+        }
+    </div>
+    <div class="text-center">
+        <button class="btn btn-warning mt-3"><i class="fa-solid fa-truck me-2"></i>Mark as Shipped</button>
+
+    </div>
+</div>
