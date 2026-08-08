@@ -9,6 +9,7 @@ import { Pnf } from './pnf/pnf';
 import { View } from './view/view';
 import { Cart } from './cart/cart';
 import { Checkout } from './checkout/checkout';
+import { UserLayout } from './user-layout/user-layout';
 
 export const routes: Routes = [
     // lazy load module - admin
@@ -16,6 +17,9 @@ export const routes: Routes = [
         path:"admin",loadChildren:()=>import('./admin-module/admin-module-module').then(module=>module.AdminModuleModule)
     },
     {
+        path:"",component:UserLayout,
+        children:[
+            {
         path:"",component:Home,title:"Home"
     },
     {
@@ -44,5 +48,9 @@ export const routes: Routes = [
     },
     {
         path:"**",component:Pnf,title:"Page Not Found"
-    },
+    }
+
+        ]
+    }
+    
 ];

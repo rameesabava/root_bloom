@@ -41,7 +41,7 @@ export class AdminDashboard {
   }
 
   getOrders(){
-    this.api.getPlacedOrdersAPI().subscribe({
+    this.api.getAllOrdersAPI().subscribe({
       next:(res:any)=>{
         // console.log(res);
         this.allOrders.set(res)

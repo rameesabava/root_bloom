@@ -4,10 +4,19 @@ import { AddPlants } from './add-plants/add-plants';
 import { UpdatePlants } from './update-plants/update-plants';
 import { AdminDashboard } from './admin-dashboard/admin-dashboard';
 import { ViewOrder } from './view-order/view-order';
+import { AdminLayout } from './admin-layout/admin-layout';
+import { AdminPlants } from './admin-plants/admin-plants';
 
 const routes: Routes = [
   {
+    path:"",component:AdminLayout,
+
+    children:[
+      {
     path:"",component:AdminDashboard,title:"Dashboard"
+  },
+  {
+    path:"plants",component:AdminPlants,title:"Plants"
   },
   {
     path:"addPlants",component:AddPlants,title:"Add Plants"
@@ -18,6 +27,11 @@ const routes: Routes = [
   {
     path:"order/:id",component:ViewOrder,title:"Order View"
   }
+
+    ]
+
+  }
+  
 ];
 
 @NgModule({

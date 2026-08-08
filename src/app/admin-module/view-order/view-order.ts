@@ -27,4 +27,10 @@ export class ViewOrder {
     })
   }
 
+  updateOrderStatus(orderId:string){
+    this.api.updateOrderStatusAPI(orderId).subscribe((res:any)=>{
+    this.orderDetails.set(res)
+    })
+  }
+
 }

@@ -1,15 +1,15 @@
 import { Component, inject } from '@angular/core';
-import { Router, RouterLink } from '@angular/router';
+import { AuthService } from '../../services/auth-service';
+import { Router } from '@angular/router';
 import Swal from 'sweetalert2';
-import { AuthService } from '../services/auth-service';
 
 @Component({
-  selector: 'app-header',
-  imports: [RouterLink],
-  templateUrl: './header.html',
-  styleUrl: './header.css',
+  selector: 'app-admin-header',
+  standalone: false,
+  templateUrl: './admin-header.html',
+  styleUrl: './admin-header.css',
 })
-export class Header {
+export class AdminHeader {
   auth = inject(AuthService)
   router = inject(Router)
 
@@ -27,6 +27,4 @@ export class Header {
             })
   this.router.navigateByUrl('/login')
  }
-
-    
 }

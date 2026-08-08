@@ -79,13 +79,18 @@ export class ApiService {
   }
 
     // get orders placed API
-  getPlacedOrdersAPI() {
-    return this.http.get(`${this.server_url}/orders/placed`, this.appendToken())
+  getAllOrdersAPI() {
+    return this.http.get(`${this.server_url}/orders`, this.appendToken())
   }
 
     // view order API
   viewOrderAPI(orderId: string) {
     return this.http.get<any>(`${this.server_url}/order/${orderId}`, this.appendToken())
+  }
+
+  // update order status as shipped
+    updateOrderStatusAPI(orderId:string) {
+    return this.http.put(`${this.server_url}/order/status/${orderId}`,{}, this.appendToken())
   }
 
 
