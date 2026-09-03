@@ -1,4 +1,7 @@
 <div class="container my-4">
+     <div class="text-end">
+            <a class="btn btn-warning mb-4" routerLink="">ADD A NEW PLANT</a>
+        </div>
     <div>
         <input [(ngModel)]="searchKey" type="text" class="form-control" placeholder="Search Plants">
 
@@ -10,6 +13,7 @@
              }
 
         </div>
+       
         <div class="row g-4 justify-content-center mt-3">
             @for (plant of allPlants() | paginate:{itemsPerPage: 8, currentPage: p} | search:searchKey; track $index){
             <div class="col-sm-6 col-md-4 col-lg-3 d-flex justify-content-center">
