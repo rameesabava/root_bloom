@@ -19,7 +19,7 @@ const routes: Routes = [
     path:"plants",component:AdminPlants,title:"Plants"
   },
   {
-    path:"addPlants",component:AddPlants,title:"Add Plants"
+    path:"plants/add",component:AddPlants,title:"Add Plants"
   },
   {
     path:"update/:id",component:UpdatePlants,title:"Update Plants"

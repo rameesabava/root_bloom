@@ -1,1 +1,335 @@
-<p>add-plants works!</p>
+<div class="container py-4">
+
+  <!-- Header -->
+  <div class="d-flex justify-content-between align-items-center mb-4">
+    <div>
+      <h2 class="fw-bold mb-1">Add New Plant</h2>
+      <p class="text-secondary mb-0">
+        Add a new plant to your Root & Bloom store
+      </p>
+    </div>
+
+    <a routerLink="/admin/plants" class="btn btn-outline-success">
+      <i class="fa-solid fa-arrow-left me-2"></i>
+      Back to Plants
+    </a>
+  </div>
+
+
+  <form (ngSubmit)="addPlant()">
+
+    <!-- Basic Information -->
+    <div class="card border-0 shadow-sm rounded-4 mb-4">
+
+      <div class="card-body p-4">
+
+        <h5 class="fw-bold mb-4">
+          <i class="fa-solid fa-leaf text-success me-2"></i>
+          Plant Information
+        </h5>
+
+        <div class="row g-4">
+
+          <!-- Name -->
+          <div class="col-md-8">
+            <label class="form-label fw-semibold">
+              Plant Name
+            </label>
+
+            <input
+              type="text"
+              name="name"
+              [(ngModel)]="plant.name"
+              class="form-control"
+              placeholder="Enter plant name"
+              required>
+          </div>
+
+
+          <!-- Category -->
+          <div class="col-md-4">
+            <label class="form-label fw-semibold">
+              Category
+            </label>
+
+            <select
+              name="category"
+              [(ngModel)]="plant.category"
+              class="form-select"
+              required>
+
+              <option value="" disabled>Select category</option>
+              <option value="Indoor Plants">Indoor Plants</option>
+              <option value="Outdoor Plants">Outdoor Plants</option>
+              <option value="Flowering Plants">Flowering Plants</option>
+              <option value="Succulents">Succulents</option>
+              <option value="Herbs">Herbs</option>
+
+            </select>
+          </div>
+
+
+          <!-- Price -->
+          <div class="col-md-6">
+            <label class="form-label fw-semibold">
+              Price
+            </label>
+
+            <div class="input-group">
+              <span class="input-group-text">₹</span>
+
+              <input
+                type="number"
+                name="price"
+                [(ngModel)]="plant.price"
+                class="form-control"
+                placeholder="Enter price"
+                required>
+            </div>
+          </div>
+
+
+          <!-- Stock -->
+          <div class="col-md-6">
+            <label class="form-label fw-semibold">
+              Stock
+            </label>
+
+            <input
+              type="number"
+              name="stock"
+              [(ngModel)]="plant.stock"
+              class="form-control"
+              placeholder="Available quantity"
+              min="0"
+              required>
+          </div>
+
+
+          <!-- Description -->
+          <div class="col-12">
+            <label class="form-label fw-semibold">
+              Description
+            </label>
+
+            <textarea
+              name="description"
+              [(ngModel)]="plant.description"
+              class="form-control"
+              rows="5"
+              placeholder="Write a description about the plant..."
+              required>
+            </textarea>
+          </div>
+
+        </div>
+
+      </div>
+    </div>
+
+
+    <!-- Image -->
+    <div class="card border-0 shadow-sm rounded-4 mb-4">
+
+      <div class="card-body p-4">
+
+        <h5 class="fw-bold mb-4">
+          <i class="fa-solid fa-image text-success me-2"></i>
+          Plant Image
+        </h5>
+
+        <div class="image-upload-box rounded-4 p-4 text-center">
+
+          <i class="fa-solid fa-cloud-arrow-up text-success display-5 mb-3"></i>
+
+          <h6 class="fw-semibold">
+            Upload Plant Image
+          </h6>
+
+          <p class="text-secondary small mb-3">
+            PNG, JPG or JPEG
+          </p>
+
+          <input
+            type="file"
+            class="form-control"
+            accept="image/*"
+            (change)="selectImage($event)"
+            required>
+
+        </div>
+
+      </div>
+
+    </div>
+
+
+    <!-- Plant Details -->
+    <div class="card border-0 shadow-sm rounded-4 mb-4">
+
+      <div class="card-body p-4">
+
+        <h5 class="fw-bold mb-4">
+          <i class="fa-solid fa-seedling text-success me-2"></i>
+          Plant Details
+        </h5>
+
+
+        <div class="row g-3">
+
+          <!-- Size -->
+          <div class="col-md-3">
+            <label class="form-label fw-semibold">
+              Size
+            </label>
+
+            <input
+              type="text"
+              name="size"
+              [(ngModel)]="plant.size"
+              class="form-control"
+              placeholder="e.g. Medium"
+              required>
+          </div>
+
+
+          <!-- Height -->
+          <div class="col-md-3">
+            <label class="form-label fw-semibold">
+              Height
+            </label>
+
+            <input
+              type="text"
+              name="height"
+              [(ngModel)]="plant.height"
+              class="form-control"
+              placeholder="e.g. 12 inch"
+              required>
+          </div>
+
+
+          <!-- Pot Size -->
+          <div class="col-md-3">
+            <label class="form-label fw-semibold">
+              Pot Size
+            </label>
+
+            <input
+              type="text"
+              name="potSize"
+              [(ngModel)]="plant.potSize"
+              class="form-control"
+              placeholder="e.g. 6 inch"
+              required>
+          </div>
+
+
+          <!-- Sunlight -->
+          <div class="col-md-3">
+            <label class="form-label fw-semibold">
+              Sunlight
+            </label>
+
+            <input
+              type="text"
+              name="sunlight"
+              [(ngModel)]="plant.sunlight"
+              class="form-control"
+              placeholder="e.g. Indirect"
+              required>
+          </div>
+
+
+          <!-- Watering -->
+          <div class="col-md-3">
+            <label class="form-label fw-semibold">
+              Watering
+            </label>
+
+            <input
+              type="text"
+              name="watering"
+              [(ngModel)]="plant.watering"
+              class="form-control"
+              placeholder="e.g. Twice a week"
+              required>
+          </div>
+
+
+          <!-- Humidity -->
+          <div class="col-md-3">
+            <label class="form-label fw-semibold">
+              Humidity
+            </label>
+
+            <input
+              type="text"
+              name="humidity"
+              [(ngModel)]="plant.humidity"
+              class="form-control"
+              placeholder="e.g. Moderate"
+              required>
+          </div>
+
+
+          <!-- Temperature -->
+          <div class="col-md-3">
+            <label class="form-label fw-semibold">
+              Temperature
+            </label>
+
+            <input
+              type="text"
+              name="temperature"
+              [(ngModel)]="plant.temperature"
+              class="form-control"
+              placeholder="e.g. 18-30°C"
+              required>
+          </div>
+
+
+          <!-- Fertilizer -->
+          <div class="col-md-3">
+            <label class="form-label fw-semibold">
+              Fertilizer
+            </label>
+
+            <input
+              type="text"
+              name="fertilizer"
+              [(ngModel)]="plant.fertilizer"
+              class="form-control"
+              placeholder="e.g. Monthly"
+              required>
+          </div>
+
+        </div>
+
+      </div>
+    </div>
+
+
+    <!-- Buttons -->
+    <div class="d-flex justify-content-end gap-2 mb-5">
+
+      <a
+        routerLink="/admin/plants"
+        class="btn btn-light border px-4">
+        Cancel
+      </a>
+
+      <button
+        type="submit"
+        class="btn btn-success px-4">
+
+        <i class="fa-solid fa-plus me-2"></i>
+        Add Plant
+
+      </button>
+
+    </div>
+
+  </form>
+
+</div>

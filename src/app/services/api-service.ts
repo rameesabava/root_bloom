@@ -93,5 +93,8 @@ export class ApiService {
     return this.http.put(`${this.server_url}/order/status/${orderId}`,{}, this.appendToken())
   }
 
-
+// add plant by admin
+addPlantAPI(reqBody:any){
+    return this.http.post(`${this.server_url}/plants/add`,reqBody, this.appendToken())
+}
 }
