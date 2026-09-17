@@ -1,6 +1,8 @@
 import { Component, inject } from '@angular/core';
 import { ApiService } from '../../services/api-service';
 import { Router } from '@angular/router';
+import Swal from 'sweetalert2';
+
 
 @Component({
   selector: 'app-add-plants',
@@ -46,7 +48,12 @@ export class AddPlants {
   addPlant() {
 
     if (!this.selectedImage) {
-      alert('Please select a plant image')
+      Swal.fire({
+        icon: 'error',
+        title: 'Error',
+        text: 'Please select a plant image'
+      })
+
       return
     }
 
@@ -76,8 +83,12 @@ export class AddPlants {
       next: (res: any) => {
 
         console.log(res)
+        Swal.fire({
+          icon: 'success',
+          title: 'Success',
+          text: 'Plant added successfully!'
+        })
 
-        alert('Plant added successfully!')
 
         this.router.navigate(['/admin/plants'])
 
@@ -86,8 +97,12 @@ export class AddPlants {
       error: (err) => {
 
         console.log(err)
+        Swal.fire({
+          icon: 'error',
+          title: 'Error',
+          text: 'Failed to add plant'
+        })
 
-        alert('Failed to add plant')
 
       }
 
