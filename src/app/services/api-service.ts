@@ -97,4 +97,5 @@ export class ApiService {
 addPlantAPI(reqBody:any){
     return this.http.post(`${this.server_url}/plants/add`,reqBody, this.appendToken())
 }
+
 }
