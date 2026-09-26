@@ -98,4 +98,8 @@ addPlantAPI(reqBody:any){
     return this.http.post(`${this.server_url}/plants/add`,reqBody, this.appendToken())
 }
 
+updatePlantAPI(id: string, reqBody: FormData) {
+  return this.http.put(`${this.server_url}/plant/${id}`,reqBody, this.appendToken())
+}
+
 }
