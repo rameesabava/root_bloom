@@ -1,37 +1,115 @@
-<div class="container my-4">
-    <div>
-        <input [(ngModel)]="searchKey" type="text" class="form-control" placeholder="Search Plants">
+<div class="container-fluid container-lg my-4 px-3 px-md-4">
 
-        <div class="d-flex justify-content-center align-items-center my-3 gap-2">
-            <button (click)="getAllPlants()" class="btn btn-success">All</button>
-            <!-- duplicate categories -->
-             @for (item of categoryArray(); track $index) {
-            <button (click)="filterPlants(item)" class="btn btn-success">{{item}}</button>
-             }
+  <!-- Search -->
+  <div class="mb-4">
+    <input
+      [(ngModel)]="searchKey"
+      type="text"
+      class="form-control search-box"
+      placeholder="Search Plants">
+  </div>
 
-        </div>
-        <div class="row g-4 justify-content-center mt-3">
-            @for (plant of allPlants() | paginate:{itemsPerPage: 8, currentPage: p} | search:searchKey; track $index){
-            <div class="col-sm-6 col-md-4 col-lg-3 d-flex justify-content-center">
-                <div (click)="viewPlant(plant._id)" class="card h-100" style="width: 18rem;">
-                    <img height="300px" [src]="serverUrl + '/uploads/' + plant.image" class="card-img-top" alt="image">
-                    <div class="card-body">
-                        <h5>{{plant.name}}</h5>
-                        <h6>Price: ₹ {{plant.price}}</h6>
-                        @if (plant.stock>=0) {
-                        <h6 class="text-success">In Stock</h6>
-                        } @else {
-                        <h6 class="text-danger">Out of Stock</h6>
-                        }
-                    </div>
-                    
-                </div>
-                
-            </div>
-            }
-        </div>
-         <div class="my-3 text-center">
-                <pagination-controls (pageChange)="p = $event"></pagination-controls>
-            </div>
+
+  <!-- Categories -->
+  <div class="category-container mb-4">
+
+    <div class="category-buttons">
+
+      <!-- All -->
+      <button
+        (click)="getAllPlants()"
+        class="btn btn-success">
+        All
+      </button>
+
+      <!-- Categories -->
+      @for (item of categoryArray(); track $index) {
+
+        <button
+          (click)="filterPlants(item)"
+          class="btn btn-outline-success">
+          {{ item }}
+        </button>
+
+      }
+
     </div>
+
+  </div>
+
+
+  <!-- Plants -->
+  <div class="row g-3 g-md-4">
+
+    @for (
+      plant of allPlants()
+      | paginate:{itemsPerPage: 8, currentPage: p}
+      | search:searchKey;
+      track $index
+    ) {
+
+      <div class="col-12 col-sm-6 col-md-4 col-lg-3">
+
+        <div
+          (click)="viewPlant(plant._id)"
+          class="card plant-card h-100 border-0 shadow-sm">
+
+          <!-- Plant Image -->
+          <div class="plant-image-wrapper">
+
+            <img
+              [src]="serverUrl + '/uploads/' + plant.image"
+              class="card-img-top plant-image"
+              [alt]="plant.name">
+
+          </div>
+
+
+          <!-- Plant Details -->
+          <div class="card-body">
+
+            <h5 class="plant-name">
+              {{ plant.name }}
+            </h5>
+
+            <h6 class="plant-price">
+              Price: ₹ {{ plant.price }}
+            </h6>
+
+            @if (plant.stock > 0) {
+
+              <span class="badge bg-success-subtle text-success">
+                <i class="fa-solid fa-circle-check me-1"></i>
+                In Stock
+              </span>
+
+            } @else {
+
+              <span class="badge bg-danger-subtle text-danger">
+                <i class="fa-solid fa-circle-xmark me-1"></i>
+                Out of Stock
+              </span>
+
+            }
+
+          </div>
+
+        </div>
+
+      </div>
+
+    }
+
+  </div>
+
+
+  <!-- Pagination -->
+  <div class="d-flex justify-content-center my-4 pagination-wrapper">
+
+    <pagination-controls
+      (pageChange)="p = $event">
+    </pagination-controls>
+
+  </div>
+
 </div>

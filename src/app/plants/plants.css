@@ -1,0 +1,169 @@
+/* Search */
+.search-box {
+  width: 100%;
+  max-width: 600px;
+  margin: auto;
+  height: 45px;
+  border-radius: 8px;
+}
+
+
+/* Categories */
+.category-container {
+  width: 100%;
+  overflow: hidden;
+}
+
+.category-buttons {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.category-buttons .btn {
+  white-space: nowrap;
+}
+
+
+/* Plant Card */
+.plant-card {
+  cursor: pointer;
+  border-radius: 12px;
+  overflow: hidden;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.plant-card:hover {
+  transform: translateY(-5px);
+}
+
+
+/* Image */
+.plant-image-wrapper {
+  width: 100%;
+  height: 250px;
+  overflow: hidden;
+  background-color: #f5f5f5;
+}
+
+.plant-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+
+/* Plant Details */
+.plant-name {
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin-bottom: 8px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.plant-price {
+  font-size: 1rem;
+  margin-bottom: 12px;
+}
+
+
+/* Pagination */
+.pagination-wrapper {
+  width: 100%;
+  overflow-x: auto;
+}
+
+
+/* Tablet */
+@media (max-width: 991.98px) {
+
+  .plant-image-wrapper {
+    height: 220px;
+  }
+
+}
+
+
+/* Mobile */
+@media (max-width: 575.98px) {
+
+  .container-fluid {
+    padding-left: 15px !important;
+    padding-right: 15px !important;
+  }
+
+  /* Search */
+  .search-box {
+    height: 42px;
+    font-size: 14px;
+  }
+
+  /* Categories become horizontally scrollable */
+  .category-container {
+    overflow-x: auto;
+    padding-bottom: 5px;
+  }
+
+  .category-buttons {
+    justify-content: flex-start;
+    flex-wrap: nowrap;
+    width: max-content;
+  }
+
+  .category-buttons .btn {
+    flex-shrink: 0;
+    font-size: 14px;
+    padding: 7px 14px;
+  }
+
+  /* Mobile cards */
+  .plant-image-wrapper {
+    height: 240px;
+  }
+
+  .plant-name {
+    font-size: 1rem;
+  }
+
+  .plant-price {
+    font-size: 0.95rem;
+  }
+
+  .plant-card:hover {
+    transform: none;
+  }
+
+  /* Pagination */
+  .pagination-wrapper {
+    justify-content: flex-start !important;
+  }
+
+}
+
+
+/* Very small phones */
+@media (max-width: 375px) {
+
+  .plant-image-wrapper {
+    height: 210px;
+  }
+
+  .plant-name {
+    font-size: 0.95rem;
+  }
+
+  .plant-price {
+    font-size: 0.9rem;
+  }
+
+  .category-buttons .btn {
+    font-size: 13px;
+    padding: 6px 12px;
+  }
+
+}
