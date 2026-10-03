@@ -6,7 +6,7 @@ import { inject, Injectable } from '@angular/core';
 })
 export class ApiService {
 
-  server_url = "http://localhost:3000"
+  server_url = "https://root-bloom-server.onrender.com"
   http = inject(HttpClient)
 
   // register API
