@@ -10,11 +10,13 @@ import { View } from './view/view';
 import { Cart } from './cart/cart';
 import { Checkout } from './checkout/checkout';
 import { UserLayout } from './user-layout/user-layout';
+import { adminGuardGuard } from './guards/admin-guard-guard';
+import { authGuard } from './guards/auth-guard';
 
 export const routes: Routes = [
     // lazy load module - admin
     {
-        path:"admin",loadChildren:()=>import('./admin-module/admin-module-module').then(module=>module.AdminModuleModule)
+        path:"admin", canActivate:[adminGuardGuard], loadChildren:()=>import('./admin-module/admin-module-module').then(module=>module.AdminModuleModule)
     },
     {
         path:"",component:UserLayout,
@@ -35,16 +37,16 @@ export const routes: Routes = [
         path:"contact",component:Contact,title:"Contact"
     },
     {
-        path:"plants",component:Plants,title:"Plants"
+        path:"plants", canActivate:[authGuard], component:Plants,title:"Plants"
     },
     {
-        path:"plant/:id",component:View,title:"View-Plant"
+        path:"plant/:id",canActivate:[authGuard],component:View,title:"View-Plant"
     },
      {
-        path:"cart",component:Cart,title:"My Cart"
+        path:"cart",canActivate:[authGuard],component:Cart,title:"My Cart"
     },
     {
-        path:"checkout",component:Checkout,title:"Checkout"
+        path:"checkout",canActivate:[authGuard],component:Checkout,title:"Checkout"
     },
     {
         path:"**",component:Pnf,title:"Page Not Found"
